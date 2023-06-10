@@ -38,7 +38,8 @@ _예시 spring-cloud-config-demo/configTarget/{application}_
 
 ```
 
-## 설정 예시 (docker-compose.yml)
+## 설정 예시
+### (docker-compose.yml)
 
 
 ```yaml
@@ -65,3 +66,18 @@ services: # 컨테이너 설정
         ...
         -----END RSA PRIVATE KEY-----
 ```
+### 실행
+GET http://localhost:9000/{application}/{profile}/{branch}
+
+예시 : GET http://localhost:9000/service2/dev/spring-cloud-config-demo
+
+POST http://localhost:9000/decrypt
+
+바디에 암호화된 문자열을 넣으면 복호화된 문자열을 반환합니다.
+
+POST http://localhost:9000/encrypt
+
+바디에 복호화된 문자열을 넣으면 암호화된 문자열을 반환합니다.
+
+### 참고
+/actuator 을 제외한 api 호출은 Basic 인증이 필요합니다.
