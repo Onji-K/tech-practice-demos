@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: configtest-dev
+  config:
+    import: optional:configserver:http://localhost:9000
+  cloud:
+    config:
+      username: user
+      password: password
+      profile: dev
+      label: spring-cloud-config-demo
+      name: service2
+logging:
+  level:
+    root: debug
+
+management:
+  endpoints: # ??? ???? ?? endpoint ??? endpoints
+    web:
+      exposure:
+        include: "*"
+
