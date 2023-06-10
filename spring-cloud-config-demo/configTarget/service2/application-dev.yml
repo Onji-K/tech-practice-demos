@@ -1,5 +1,5 @@
 spring:
   datasource:
-    uri: service2dev-edit
+    uri: service2dev-edit-again
     username: root
     password: password
