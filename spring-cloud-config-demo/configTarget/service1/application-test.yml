@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    uri: service1test
+    username: root
+    password: password
