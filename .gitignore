@@ -1,3 +1,5 @@
 
 .DS_Store
 .idea/
+spring-cloud-config-demo/configserver/docker-compose.yml
+spring-cloud-config-demo/configserver/docker-compose.yml

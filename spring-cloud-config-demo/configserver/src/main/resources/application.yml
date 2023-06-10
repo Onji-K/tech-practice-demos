@@ -1,0 +1,23 @@
+server:
+  port: 9000
+spring:
+  security:
+    user:
+      password: ${BASIC_PASSWORD}
+      name: ${BASIC_USERNAME}
+  cloud:
+    config:
+      server:
+        accept-empty: false # if there is no configuration file, respond with 404
+        git:
+          uri: ${GIT_REPO_SSH_URL} #git repo url
+          default-label: ${GIT_DEFAULT_BRANCH} #branch name
+          search-paths: ${GIT_SEARCH_PATH} #path to config files
+          delete-untracked-branches: true # delete local branches that are not in the remote repository
+          ignore-local-ssh-settings: true #ignore local ssh settings
+          private-key: ${GIT_SSH_PRIVATE_KEY}
+encrypt:
+  key: ${ENCRYPT_KEY}
+logging:
+  level:
+    root: info
