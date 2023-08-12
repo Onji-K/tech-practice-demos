@@ -1,4 +1,4 @@
-package com.example.how_to_commit;
+package com.example.subscribe_commit;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -13,7 +13,8 @@ import java.util.Properties;
 
 import static com.example.GlobalConstant.*;
 
-public class AsyncCommit {
+public class SyncCommit {
+
     private final static Logger logger = LoggerFactory.getLogger(SyncCommit.class.getName());
 
     public static void main(String[] args) {
@@ -38,17 +39,18 @@ public class AsyncCommit {
                 logger.info("record info -> {} : {}" , record.key(), record.value());
             });
 
-            //비동기 커밋
-//            consumer.commitAsync();
-            //콜백 지정
-            consumer.commitAsync((offsets, exception) -> {
-                if (exception != null) {
-                    logger.error(exception.getMessage(), exception);
-                } else {
-                    logger.info(offsets.toString());
-                }
-            });
+            //동기 커밋 - 모든 레코드를 다 처리한 후 커밋해야한다.
+            consumer.commitSync();
+            /*
+            이것이 없으면, auto-commit이 false이기 때문에, 항상 처음 부터 불러와진다.
+            오프셋 커밋이 되어있지 않으므로
+             */
+
         }
+
+
+
+
 
     }
 }

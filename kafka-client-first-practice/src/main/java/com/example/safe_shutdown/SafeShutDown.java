@@ -1,4 +1,4 @@
-package com.example.how_to_commit;
+package com.example.safe_shutdown;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -22,17 +22,16 @@ public class SafeShutDown {
         configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 
 
-
         try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(configs);) {
             consumer.subscribe(List.of(TOPIC_NAME));
 
-            while (true){
+            while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));
                 for (ConsumerRecord<String, String> record : records) {
                     System.out.println(record);
                 }
             }
-        } catch (WakeupException e){
+        } catch (WakeupException e) {
             System.out.println("wake up consumer");
         }
 
@@ -42,3 +41,4 @@ public class SafeShutDown {
          */
 
     }
+}

@@ -1,4 +1,4 @@
-package com.example.how_to_commit;
+package com.example.subscribe_commit;
 
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.TopicPartition;
